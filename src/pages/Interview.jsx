@@ -125,7 +125,7 @@ export default function Interview() {
         {/* ANSWER INPUT */}
         <textarea
           value={transcript}
-          placeholder="Type your answer here or speak..."
+          placeholder="speak about what you Know !..."
           readOnly
         />
 

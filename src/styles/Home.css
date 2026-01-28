@@ -32,7 +32,8 @@ h1 span {
 }
 
 .section-title {
-  margin-top: 3rem;
+  margin-top: 3rem; /* space above the text */
+  margin-bottom: 2rem; /* space below the text */
   color: white;
 }
 
