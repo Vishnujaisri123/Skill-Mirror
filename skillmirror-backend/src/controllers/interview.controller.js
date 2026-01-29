@@ -1,4 +1,4 @@
- import Interview from "../models/Interview.js";
+import Interview from "../models/Interview.js";
 import {
   generateQuestions,
   evaluateInterview,
@@ -18,10 +18,6 @@ export const startInterview = async (req, res) => {
 
     // 🤖 Generate AI questions
     const questions = await generateQuestions(skill, 5);
-
-    if (!questions || questions.length === 0) {
-      return res.status(500).json({ message: "Failed to generate questions" });
-    }
 
     // 🧠 Create interview session
     const interview = await Interview.create({
