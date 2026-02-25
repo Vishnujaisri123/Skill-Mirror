@@ -80,7 +80,8 @@ export default function Home() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/interview/start", {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const res = await fetch(`${apiUrl}/api/interview/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
