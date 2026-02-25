@@ -1,0 +1,230 @@
+.interview-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #020617;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Base Ambient Glow */
+.glow-bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulse-glow 5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
+}
+
+/* HEADER */
+.interview-header {
+  position: relative;
+  z-index: 10;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.minimal-header {
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+.question-count {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.cancel-btn.minimal {
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.cancel-btn.minimal:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* VOICE CORE UI */
+.voice-core {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 0 2rem;
+}
+
+.status-text {
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fade-in 0.5s;
+}
+
+/* CHAT BOXES */
+.chat-box {
+  background: rgba(30, 41, 59, 0.7); /* Slightly darker to compensate for no blur */
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transform: translateZ(0); /* Hardware acceleration to prevent disappearing glitch */
+  z-index: 20; /* Ensure boxes are layered strictly above the central visualizer */
+}
+
+.chat-label {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #0f172a;
+  padding: 2px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.ai-chat-box {
+  margin-bottom: 3rem;
+}
+
+.ai-question-text {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  animation: fade-in 0.8s;
+  margin: 0;
+  text-align: left;
+}
+
+/* VISUALIZER */
+.central-visual {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  background: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.central-visual.is-speaking {
+  filter: drop-shadow(0 0 20px rgba(45, 212, 191, 0.3));
+  transform: scale(1.1);
+  border-color: rgba(45, 212, 191, 0.5);
+}
+
+.central-visual.is-listening {
+  filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.3));
+  transform: scale(1.05);
+  border-color: rgba(167, 139, 250, 0.5);
+}
+
+.central-visual.is-processing {
+  filter: drop-shadow(0 0 15px rgba(148, 163, 184, 0.4));
+  opacity: 0.6;
+}
+
+/* TRANSCRIPT BOX */
+.user-chat-box {
+  margin-top: 3rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-chat-box.is-listening-border {
+  border-color: rgba(167, 139, 250, 0.6);
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.2);
+}
+
+.live-transcript {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #cbd5e1;
+  min-height: 50px;
+  line-height: 1.6;
+  text-align: left;
+  transition: opacity 0.3s;
+}
+
+.placeholder-text {
+  color: #475569;
+  font-style: italic;
+}
+
+/* FOOTER & ACTIONS */
+.voice-footer {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.tap-submit-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  padding: 1.2rem 3.5rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
+}
+
+.tap-submit-btn.active {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  font-weight: 500;
+}
+
+.tap-submit-btn.active:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
