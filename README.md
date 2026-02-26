@@ -71,8 +71,8 @@ Skill Mirror is a modern, voice-first interview and assessment platform designed
 ## 🤝 Collaboration
 
 This project is a collaborative effort:
-- **Frontend Development:** [Collaborator Name/Friend]
-- **Backend & AI Logic:** [Your Name/User]
+- **Frontend Development:** [Vidya]
+- **Backend & AI Logic:** [vishnu]
 
 ---
 
